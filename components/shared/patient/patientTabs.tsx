@@ -26,7 +26,7 @@ type TRegisterForm = {
 };
 const PatientTabs = ({ user }: {user: User}) => {
   const router = useRouter();
-  const [selectedTab, setSelectedTab] = useState<string>("3");
+  const [selectedTab, setSelectedTab] = useState<string>("0");
   const form = useForm<z.infer<typeof patientFormScheme>>({
     resolver: zodResolver(patientFormScheme),
     defaultValues: {
