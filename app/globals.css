@@ -53,11 +53,11 @@
   }
 
   .container {
-    @apply relative flex-1 overflow-y-auto px-[5%];
+    @apply flex flex-col justify-between overflow-y-auto px-[5%];
   }
 
   .sub-container {
-    @apply mx-auto flex size-full flex-col py-10;
+    @apply mx-auto flex size-full flex-col py-10 ;
   }
 
   .side-img {
@@ -343,4 +343,15 @@
 
 .PhoneInputInput::placeholder {
   color: #1a1d21;
+}
+
+.custom-phone-input input {
+  background-color: #fff !important; /* Override background color */
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.custom-phone-input {
+  overflow-x: hidden !important;
+  /* Add any other styles if necessary */
 }

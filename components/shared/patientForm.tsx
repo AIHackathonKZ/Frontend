@@ -17,10 +17,8 @@ import { Input } from "@nextui-org/input";
 import { div, em, p } from "framer-motion/client";
 import { createUser } from "@/lib/actions/patient.actions";
 
-type TRegisterForm = {
-  type: formTypes;
-};
-const RegisterForm = ({ type }: TRegisterForm) => {
+type TRegisterForm = {};
+const PatientForm = ({}: TRegisterForm) => {
   const router = useRouter();
 
   const form = useForm<z.infer<typeof registerFormScheme>>({
@@ -43,13 +41,6 @@ const RegisterForm = ({ type }: TRegisterForm) => {
       phone: `+${values.phone}`,
     };
     try {
-      if (type == "signup") {
-        CreateUserQuery.mutate(user);
-      } else if (type == "signin") {
-        //Sign in logic
-      } else {
-        //Recovery Logic
-      }
     } catch (error) {
       console.log(error);
     } finally {
@@ -75,16 +66,14 @@ const RegisterForm = ({ type }: TRegisterForm) => {
         className="flex flex-col gap-4"
         onSubmit={form.handleSubmit(submitForm)}
       >
-        {type == "signup" && (
-          <>
-            <DefaultInput
-              formName="name"
-              placeholder="Muratbekov Aman"
-              label="Full name"
-              errorMessage={form.formState.errors.name?.message}
-            />
-          </>
-        )}
+        <>
+          <DefaultInput
+            formName="name"
+            placeholder="Muratbekov Aman"
+            label="Full name"
+            errorMessage={form.formState.errors.name?.message}
+          />
+        </>
         <DefaultInput
           formName="email"
           placeholder="example@email.com"
@@ -92,22 +81,23 @@ const RegisterForm = ({ type }: TRegisterForm) => {
           errorMessage={form.formState.errors.email?.message}
         />
 
-        {type == "signup" && (
-          <Controller
-            control={form.control}
-            name="phone"
-            render={({ field }) => (
-              <>
+        <Controller
+          control={form.control}
+          name="phone"
+          render={({ field }) => (
+            <>
               <PhoneInput
                 country={"kz"}
                 placeholder="+12133734253"
                 onChange={(value) => field.onChange(value)}
                 value={field.value}
               />
-             {form.formState.errors.email?.message && <p>{form.formState.errors.phone?.message}</p>}</>
-            )}
-          />
-        )}
+              {form.formState.errors.email?.message && (
+                <p>{form.formState.errors.phone?.message}</p>
+              )}
+            </>
+          )}
+        />
         <Button color="primary" type="submit">
           Let's go
         </Button>
@@ -116,4 +106,4 @@ const RegisterForm = ({ type }: TRegisterForm) => {
   );
 };
 
-export default RegisterForm;
+export default PatientForm;
