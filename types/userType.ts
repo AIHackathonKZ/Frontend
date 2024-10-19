@@ -8,7 +8,7 @@ export type SearchParamProps = {
     searchParams: { [key: string]: string | string[] | undefined };
   };
   
-  export type Gender = "Male" | "Female";
+  export type Gender = "Male" | "Female" | "Other";
   export type Status = "pending" | "scheduled" | "cancelled";
   
   export interface TCreateUser {
@@ -37,7 +37,6 @@ export type SearchParamProps = {
     pastMedicalHistory: string | undefined;
     identificationType: string | undefined;
     identificationNumber: string | undefined;
-    identificationDocument: FormData | undefined;
     privacyConsent: boolean;
   }
   

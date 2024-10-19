@@ -16,6 +16,7 @@ import { useRouter } from "next/navigation";
 import { Input } from "@nextui-org/input";
 import { div, em, p } from "framer-motion/client";
 import { createUser } from "@/lib/actions/patient.actions";
+import PhoneInputControlled from "../ui/form/phoneInput";
 
 type TRegisterForm = {
   type: formTypes;
@@ -77,11 +78,16 @@ const RegisterForm = ({ type }: TRegisterForm) => {
       >
         {type == "signup" && (
           <>
+            <PhoneInputControlled phoneName={"phone"} />
+            {form.formState.errors.phone?.message && (
+              <p className="text-red-500 text-xs">
+                {form.formState.errors.phone?.message}
+              </p>
+            )}
             <DefaultInput
               formName="name"
               placeholder="Muratbekov Aman"
               label="Full name"
-              errorMessage={form.formState.errors.name?.message}
             />
           </>
         )}
@@ -89,25 +95,8 @@ const RegisterForm = ({ type }: TRegisterForm) => {
           formName="email"
           placeholder="example@email.com"
           label="Email"
-          errorMessage={form.formState.errors.email?.message}
         />
 
-        {type == "signup" && (
-          <Controller
-            control={form.control}
-            name="phone"
-            render={({ field }) => (
-              <>
-              <PhoneInput
-                country={"kz"}
-                placeholder="+12133734253"
-                onChange={(value) => field.onChange(value)}
-                value={field.value}
-              />
-             {form.formState.errors.email?.message && <p>{form.formState.errors.phone?.message}</p>}</>
-            )}
-          />
-        )}
         <Button color="primary" type="submit">
           Let's go
         </Button>
