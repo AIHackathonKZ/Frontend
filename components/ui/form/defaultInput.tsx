@@ -14,7 +14,7 @@ export const DefaultInput = ({
   label,
   errorMessage
 }: TDefaultInput) => {
-  const { control } = useFormContext();
+  const { control, formState } = useFormContext();
   return (
     <Controller
       name={formName}
@@ -25,8 +25,8 @@ export const DefaultInput = ({
           onChange={field.onChange}
           placeholder={placeholder}
           label={label}
-          errorMessage={errorMessage}
-          isInvalid={errorMessage ? true : false}
+          errorMessage={formState.errors[formName]?.message && formState.errors[formName]?.message as string}
+          isInvalid={formState.errors[formName]?.message ? true : false}
         />
       )}
     />
