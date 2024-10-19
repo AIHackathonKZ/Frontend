@@ -4,24 +4,24 @@ import { CopilotChat } from "@copilotkit/react-ui";
 import { useCopilotChat, useCopilotAction } from "@copilotkit/react-core";
 
 export function ChatUi() {
-	useCopilotAction({
-		name: "sendMessageToMail",
-		description: "Say hello to someone.",
-		parameters: [
-			{
-				name: "name",
-				type: "string",
-				description: "name of the person to say greet",
-			},
-		],
-		handler: async ({ name }) => {
-			alert(`Hello, ${name}!`);
-		},
-	});
+	// useCopilotAction({
+	// 	name: "sendMessageToMail",
+	// 	description: "Say hello to someone.",
+	// 	parameters: [
+	// 		{
+	// 			name: "name",
+	// 			type: "string",
+	// 			description: "name of the person to say greet",
+	// 		},
+	// 	],
+	// 	handler: async ({ name }) => {
+	// 		alert(`Hello, ${name}!`);
+	// 	},
+	// });
 
-	const { visibleMessages } = useCopilotChat();
+	// const { visibleMessages } = useCopilotChat();
 
-	console.log(visibleMessages);
+	// console.log(visibleMessages);
 
 	return (
 		<CopilotChat
@@ -29,18 +29,18 @@ export function ChatUi() {
 Ты должен сразу делать тест на выгорание без подтверждения пользователя
 Вы — психологический ассистент. Ваша задача — предложить пользователю пройти оценку на выгорание и помочь интерпретировать результаты. Используйте следующий опрос и инструкции по интерпретации баллов. Также предоставляйте советы по борьбе со стрессом, основываясь на результатах теста. Проявляйте эмпатию и поддерживайте пользователя, но избегайте медицинских рекомендаций.
 
-Выдавай каждый вопрос по одному
-
 Опрос на оценку выгорания:
 Каждый вопрос должен быть оценен по шкале от 0 до 4, где 0 — "Никогда", а 4 — "Всегда". 
-Когда задаешь вопрос пиши внизу варианты ответа с цифрами
- 1) Никогда
- 2) Редко
- 3) Иногда
- 4) Часто
- 5) Всегда
+Когда задаешь вопрос пиши внизу варианты ответа с нумерацией:
+1. Никогда
+2. Редко
+3. Иногда
+4. Часто
+5. Всегда 
 
 Вопросы:
+
+Задавай каждый вопрос по одному
 
 1) Как часто вы чувствуете физическое и эмоциональное истощение в конце дня?
 
