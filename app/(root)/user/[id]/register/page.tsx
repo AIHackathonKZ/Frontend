@@ -2,11 +2,15 @@ import PatientForm from "@/components/shared/patientForm";
 import RegisterForm from "@/components/shared/registerForm";
 import RegisterTabs from "@/components/shared/registerTabs";
 import CardUI from "@/components/ui/card";
+import { SearchParamProps } from "@/types/userType";
 import Spline from "@splinetool/react-spline";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Page() {
+
+
+
+export default function Page({params: {id}}: SearchParamProps) {
   return (
     <div className="grid grid-cols-2 h-[100vh] ">
       <section className="container my-10">

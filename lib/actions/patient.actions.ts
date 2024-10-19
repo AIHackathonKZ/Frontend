@@ -24,3 +24,14 @@ export async function createUser (userData: TCreateUser ){
     }
     
 }
+
+
+export async function getUser({id}: {id:string}){
+    try{
+        const user = await users.get(id)
+        return user
+    }catch(error){
+        console.log(error)
+    }
+
+}
